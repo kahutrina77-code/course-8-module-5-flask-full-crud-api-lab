@@ -18,6 +18,14 @@ events = [
 ]
 
 # TODO: Task 1 - Define the Problem
+@app.route("/", methods=["GET"])
+def welcome():
+    return jsonify({"message": "Welcome to the Events API"})
+
+#  Get all events
+@app.route("/events", methods=["GET"])
+def get_events():
+    return jsonify([e.to_dict() for e in events])
 # Create a new event from JSON input
 @app.route("/events", methods=["POST"])
 def create_event():
